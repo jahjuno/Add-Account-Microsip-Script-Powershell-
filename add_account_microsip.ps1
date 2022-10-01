@@ -4,14 +4,15 @@
     **************************************************
 "
 
+#function to format microsip.ini 
 
 function Get-IniContent ($filePath) {
-    $ini = @{}
+    $initial_value = @{}
     switch -regex -file $FilePath {
         "^\[(.+)\]" # Section
         {
             $section = $matches[1]
-            $ini[$section] = @{}
+            $initial_value[$section] = @{}
             $CommentCount = 0
         }
         "^(;.*)$" # Comment
@@ -19,24 +20,24 @@ function Get-IniContent ($filePath) {
             $value = $matches[1]
             $CommentCount = $CommentCount + 1
             $name = "Comment" + $CommentCount
-            $ini[$section][$name] = $value
+            $initial_value[$section][$name] = $value
         }
         "(.+?)\s*=(.*)" # Key
         {
             $name,$value = $matches[1..2]
-            $ini[$section][$name] = $value
+            $initial_value[$section][$name] = $value
         }
     }
-    return $ini
+    return $initial_value
 }
 
-# the data returned is a Hashtable where each entry is listed 
-# under a certain section name. This data is UNORDERED by default
-$data = Get-IniContent -filePath 'Your File Path here'
+$upload_microsip_file = 'C:\Users\OTM_ADMIN\AppData\Roaming\MicroSIP\microsip.ini'
+$data = Get-IniContent -filePath $upload_microsip_file
 
-#$data['Account1'].Keys | ForEach-Object { $data['Account1']['server']}
-$data['Account1']['label']
-$data['Account1']['Server']
-$data['Account1']['domain']
-$data['Account1']['username']
-$data['Account1']['authID']
+#Information needed to modify during add account
+$data['Account3']['label']
+$data['Account3']['Server']
+$data['Account3']['domain']
+$data['Account3']['username']
+$data['Account3']['authID']
+$data['Account3']['displayName']
