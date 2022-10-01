@@ -32,7 +32,7 @@ function Get-IniContent ($filePath) {
 
 # the data returned is a Hashtable where each entry is listed 
 # under a certain section name. This data is UNORDERED by default
-$data = Get-IniContent -filePath 'C:\Users\OTM_ADMIN\AppData\Roaming\MicroSIP\microsip.ini'
+$data = Get-IniContent -filePath 'Your File Path here'
 
 #$data['Account1'].Keys | ForEach-Object { $data['Account1']['server']}
 $data['Account1']['label']
