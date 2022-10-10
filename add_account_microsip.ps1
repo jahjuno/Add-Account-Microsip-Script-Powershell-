@@ -5,7 +5,7 @@
 "
 
 #function to format microsip.ini 
-$username = Read-Host -Prompt "Votre Prénom Usuel >>> "
+$username = Read-Host -Prompt "Votre Prénom Usuel (sans caractère spéciaux) >>> "
 
 #verification if username starts with capital letter
 if ($username -cmatch "^[A-Z]{1}") {
@@ -17,7 +17,6 @@ if ($username -cmatch "^[A-Z]{1}") {
 else { 
     
     $username_new = $username.Substring(0,1).ToUpper()+$username.Substring(1).ToLower()
-    Write-Host $username_new
 }
 
 
@@ -59,10 +58,10 @@ $upload_microsip_file = 'C:\Users\OTM_ADMIN\AppData\Roaming\MicroSIP\microsip.in
 $data = Get-IniContent -filePath $upload_microsip_file
 
 
-$data.Account3.label = $username_new
-$data.Account3.username = $username_new
-$data.Account3.authID = $username_new
-$data.Account3.displayName = $username_new
+$data.Account1.label = $username_new
+$data.Account1.username = $username_new
+$data.Account1.authID = $username_new
+$data.Account1.displayName = $username_new
 
 
-$data.Account3
+$data.Account1
