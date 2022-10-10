@@ -5,8 +5,9 @@
 "
 
 #function to format microsip.ini 
+$username = Read-Host -Prompt "Votre Prénom Usuel >>> "
 
-function Get-IniContent ($filePath) {
+function Get-IniContent ($FilePath) {
 
     $initial_value = @{}
 
@@ -39,14 +40,14 @@ function Get-IniContent ($filePath) {
 
 }
 
-$upload_microsip_file = 'Your Microsip.ini PATH'
+$upload_microsip_file = 'C:\Users\OTM_ADMIN\AppData\Roaming\MicroSIP\microsip.ini'
 $data = Get-IniContent -filePath $upload_microsip_file
 
-#Information needed to modify during add account
-$data['Account3']['label']
-$data['Account3']['Server']
-$data['Account3']['domain']
-$data['Account3']['username']
-$data['Account3']['authID']
-$data['Account3']['displayName'] 
 
+$data.Account3.label = $username
+$data.Account3.username = $username
+$data.Account3.authID = $username
+$data.Account3.displayName = $username
+
+
+$data.Account3
