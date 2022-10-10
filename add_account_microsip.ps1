@@ -54,8 +54,8 @@ function Get-IniContent ($FilePath) {
 
 }
 
-$upload_microsip_file = 'C:\Users\OTM_ADMIN\AppData\Roaming\MicroSIP\microsip.ini'
-$data = Get-IniContent -filePath $upload_microsip_file
+$upload_microsip_file = $env:APPDATA   #get userprofil path
+$data = Get-IniContent -filePath $upload_microsip_file\MicroSIP\microsip.ini
 
 
 $data.Account1.label = $username_new
