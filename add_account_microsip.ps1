@@ -9,7 +9,7 @@ $username = Read-Host -Prompt "Votre Prénom Usuel (sans caractère spéciaux) >
 
 #verification if username starts with capital letter
 if ($username -cmatch "^[A-Z]{1}") {
-    $username_new = $username
+    $username_new = $username.Substring(0,1).ToUpper()+$username.Substring(1).ToLower()
 }
 
 
